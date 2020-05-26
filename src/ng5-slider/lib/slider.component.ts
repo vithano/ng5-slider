@@ -1238,7 +1238,12 @@ export class SliderComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   private updateLowHandle(newPos: number): void {
     this.minHandleElement.setPosition(newPos);
     this.minHandleLabelElement.setValue(this.getDisplayValue(this.viewLowValue, LabelType.Low));
-    this.minHandleLabelElement.setPosition(this.getHandleLabelPos(PointerType.Min, newPos));
+    var pos = this.getHandleLabelPos(PointerType.Min, newPos);
+        if(this.viewOptions.fixLabelToCenter === true){
+            var handleDimension = Math.floor(this.minHandleLabelElement.dimension/16);
+            pos = Math.ceil(Math.ceil(this.maxHandlePosition/2) - handleDimension*3 - 1);
+        }
+    this.minHandleLabelElement.setPosition(pos);
 
     if (!ValueHelper.isNullOrUndefined(this.viewOptions.getPointerColor)) {
       this.minPointerStyle = {
@@ -1255,7 +1260,12 @@ export class SliderComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   private updateHighHandle(newPos: number): void {
     this.maxHandleElement.setPosition(newPos);
     this.maxHandleLabelElement.setValue(this.getDisplayValue(this.viewHighValue, LabelType.High));
-    this.maxHandleLabelElement.setPosition(this.getHandleLabelPos(PointerType.Max, newPos));
+    var pos = this.getHandleLabelPos(PointerType.Max, newPos);
+        if(this.viewOptions.fixLabelToCenter === true){
+            var handleDimension = Math.floor(this.maxHandleLabelElement.dimension/16);
+            pos = Math.ceil(Math.ceil(this.maxHandlePosition/2) - handleDimension*3 - 1);
+        }
+    this.maxHandleLabelElement.setPosition(pos);
 
     if (!ValueHelper.isNullOrUndefined(this.viewOptions.getPointerColor)) {
       this.maxPointerStyle = {
