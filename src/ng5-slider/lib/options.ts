@@ -302,4 +302,8 @@ export class Options {
 
   /** Enable/disable CSS animations */
   animate?: boolean = true;
+  
+  /** Fix position of label to center */
+  fixLabelToCenter?: boolean = false;
+
 }
