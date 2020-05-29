@@ -10,8 +10,8 @@
 
 @mixin rounded($radius: 2px) {
   -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-          border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
 }
 
 $enableNgDeep: true !default;
@@ -156,7 +156,7 @@ $animationDuration: 0.3s !default;
       @include rounded($handleSize / 2);
 
       &:after {
-        content: '';
+        content: "";
         width: $handlePointerSize;
         height: $handlePointerSize;
         position: absolute;
